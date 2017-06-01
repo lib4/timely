@@ -19,14 +19,19 @@ android {
     }
 }
 
+ext {
+    support_version = '25.3.1'
+    material_dialogs_version = '0.9.4.5'
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:design:25.3.1'
-    compile 'com.afollestad.material-dialogs:core:0.9.4.5'
-    compile 'com.afollestad.material-dialogs:commons:0.9.4.5'
+    compile "com.android.support:appcompat-v7:$support_version"
+    compile "com.android.support:design:$support_version"
+    compile "com.afollestad.material-dialogs:core:$material_dialogs_version"
+    compile "com.afollestad.material-dialogs:commons:$material_dialogs_version"
     testCompile 'junit:junit:4.12'
 }
