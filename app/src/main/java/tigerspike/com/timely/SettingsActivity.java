@@ -1,5 +1,9 @@
 package tigerspike.com.timely;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
@@ -7,6 +11,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.NotificationCompat;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -73,6 +78,7 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 prepareAndShowWorkingHours();
+
             }
         });
         binding.chooseYourWorkingDays.setOnClickListener(new View.OnClickListener() {
@@ -85,6 +91,7 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 prepareAndShowLineManagers();
+                showNotification();
             }
         });
     }
@@ -165,6 +172,30 @@ public class SettingsActivity extends AppCompatActivity {
         Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
         finishAffinity();
+    }
+
+    private void showNotification() {
+
+        Intent intent = new Intent(this, HomeActivity.class);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        NotificationCompat.Builder b = new NotificationCompat.Builder(this);
+
+        b.setAutoCancel(true)
+                .setDefaults(Notification.DEFAULT_ALL)
+                .setWhen(System.currentTimeMillis())
+                .setSmallIcon(R.drawable.ic_dashboard_black_24dp)
+//                .addAction(R.drawable.yes,"YES",contentIntent)
+                .setTicker("Hearty365")
+                .setContentTitle("Default notification")
+                .setContentText("Are you goign to be late? If Yes TAP Here")
+                .setDefaults(Notification.DEFAULT_LIGHTS| Notification.DEFAULT_SOUND)
+                .setContentIntent(contentIntent)
+                .setContentInfo("Info");
+
+
+        NotificationManager notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(1, b.build());
     }
 
 }
