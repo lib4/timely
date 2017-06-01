@@ -16,7 +16,7 @@ import com.afollestad.materialdialogs.simplelist.MaterialSimpleListItem;
 public class SettingsActivity extends AppCompatActivity {
 
     private TextView mChooseLineManager;
-    private TextView mTextMessage;
+    private TextView mAccountEmail;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -25,13 +25,12 @@ public class SettingsActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
+
                     return true;
                 case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
+
                     return true;
                 case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
                     return true;
             }
             return false;
@@ -45,6 +44,8 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
 
         mChooseLineManager = (TextView) findViewById(R.id.choose_your_lm);
+        mAccountEmail = (TextView) findViewById(R.id.account);
+        mAccountEmail.setText(getIntent().getStringExtra("Email"));
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         mChooseLineManager.setOnClickListener(new View.OnClickListener() {
@@ -62,6 +63,7 @@ public class SettingsActivity extends AppCompatActivity {
             public void onMaterialListItemSelected(MaterialDialog dialog, int index, MaterialSimpleListItem item) {
                 // TODO
                 mChooseLineManager.setText(item.getContent());
+                dialog.cancel();
             }
         });
 
