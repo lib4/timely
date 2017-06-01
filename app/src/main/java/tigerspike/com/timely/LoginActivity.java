@@ -348,6 +348,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private void gotoSettingsScreen() {
         Intent intent = new Intent(this, SettingsActivity.class);
+        intent.putExtra("Email",mEmailView.getText().toString());
         startActivity(intent);
         finishAffinity();
     }

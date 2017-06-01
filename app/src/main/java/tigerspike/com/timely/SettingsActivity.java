@@ -16,6 +16,7 @@ import com.afollestad.materialdialogs.simplelist.MaterialSimpleListItem;
 public class SettingsActivity extends AppCompatActivity {
 
     private TextView mChooseLineManager;
+    private TextView mAccountEmail;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -41,6 +42,8 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
 
         mChooseLineManager = (TextView) findViewById(R.id.choose_your_lm);
+        mAccountEmail = (TextView) findViewById(R.id.account);
+        mAccountEmail.setText(getIntent().getStringExtra("Email"));
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         mChooseLineManager.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +61,7 @@ public class SettingsActivity extends AppCompatActivity {
             public void onMaterialListItemSelected(MaterialDialog dialog, int index, MaterialSimpleListItem item) {
                 // TODO
                 mChooseLineManager.setText(item.getContent());
+                dialog.cancel();
             }
         });
 
