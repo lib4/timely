@@ -34,6 +34,11 @@ public class SettingsActivity extends AppCompatActivity {
             "andy.boyle@tigerspike.com"
     );
 
+    private static final List<String> workingDays = Arrays.asList(
+            "Sunday - Thursday",
+            "Monday - Friday"
+    );
+
     private static final List<String> workingHours = Arrays.asList(
             "8:00 - 16:30",
             "8:15 - 16:45",
@@ -76,6 +81,12 @@ public class SettingsActivity extends AppCompatActivity {
 
             }
         });
+        binding.chooseYourWorkingDays.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                prepareAndShowWorkingDays();
+            }
+        });
         binding.chooseYourLm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,6 +94,26 @@ public class SettingsActivity extends AppCompatActivity {
                 showNotification();
             }
         });
+    }
+
+    private void prepareAndShowWorkingDays() {
+        final MaterialSimpleListAdapter adapter = new MaterialSimpleListAdapter(new MaterialSimpleListAdapter.Callback() {
+            @Override
+            public void onMaterialListItemSelected(MaterialDialog dialog, int index, MaterialSimpleListItem item) {
+                // TODO
+                binding.chooseYourWorkingDays.setText(item.getContent());
+                dialog.cancel();
+            }
+        });
+
+        for (MaterialSimpleListItem item : getDialogItems(workingDays)) {
+            adapter.add(item);
+        }
+
+        new MaterialDialog.Builder(this)
+                .title("Choose Working Days")
+                .adapter(adapter, null)
+                .show();
     }
 
     private void prepareAndShowWorkingHours() {
