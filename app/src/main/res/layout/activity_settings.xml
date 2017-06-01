@@ -13,17 +13,16 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
 
         <android.support.v7.widget.SwitchCompat
             android:id="@+id/toggleButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="16dp"
             android:text="Notifications"
-            android:textAppearance="@style/CodeFont"
-            android:padding="16dp"/>
+            android:textAppearance="@style/CodeFont" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Account"
-                android:textAppearance="@style/CodeFont"/>
+                android:textAppearance="@style/CodeFont" />
 
             <TextView
                 android:layout_width="0dp"
@@ -44,7 +43,7 @@
                 android:layout_weight="1"
                 android:text="xyz@tigerspike.com"
                 android:textAlignment="viewEnd"
-                android:textAppearance="@style/HoghtlightCodeFont"/>
+                android:textAppearance="@style/HoghtlightCodeFont" />
 
 
         </LinearLayout>
@@ -58,17 +57,17 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Working Hours"
                 android:layout_weight="1"
-                android:textAppearance="@style/CodeFont"/>
+                android:text="Working Hours"
+                android:textAppearance="@style/CodeFont" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="Select"
                 android:textAlignment="viewEnd"
-                android:layout_weight="1"
-                android:textAppearance="@style/HoghtlightCodeFont"/>
+                android:textAppearance="@style/HoghtlightCodeFont" />
 
 
         </LinearLayout>
@@ -85,15 +84,15 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Working Days"
-                android:textAppearance="@style/CodeFont"/>
+                android:textAppearance="@style/CodeFont" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textAlignment="viewEnd"
                 android:text="Select"
-                android:textAppearance="@style/HoghtlightCodeFont"/>
+                android:textAlignment="viewEnd"
+                android:textAppearance="@style/HoghtlightCodeFont" />
 
 
         </LinearLayout>
@@ -110,16 +109,16 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Choose Your Line Manager"
-                android:textAppearance="@style/CodeFont"/>
+                android:textAppearance="@style/CodeFont" />
 
             <TextView
+                android:id="@+id/choose_your_lm"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textAlignment="viewEnd"
-                android:id="@+id/choose_your_lm"
                 android:text="Select"
-                android:textAppearance="@style/HoghtlightCodeFont"/>
+                android:textAlignment="viewEnd"
+                android:textAppearance="@style/HoghtlightCodeFont" />
 
 
         </LinearLayout>
