@@ -1,5 +1,6 @@
 package tigerspike.com.timely;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -25,7 +26,7 @@ public class SettingsActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-
+                    gotoHomeScreen();
                     return true;
                 case R.id.navigation_dashboard:
 
@@ -92,6 +93,13 @@ public class SettingsActivity extends AppCompatActivity {
                 .title("Choose Your Line Manager")
                 .adapter(adapter, null)
                 .show();
+    }
+
+
+    private void gotoHomeScreen() {
+        Intent intent   =   new Intent(this, HomeActivity.class);
+        startActivity(intent);
+        finishAffinity();
     }
 
 }

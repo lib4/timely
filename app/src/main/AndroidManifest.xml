@@ -16,9 +16,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".SettingsActivity"
-            android:label="Settings">
-
-        </activity>
+            android:label="Settings"></activity>
         <activity
             android:name=".LoginActivity"
             android:label="Timely">
@@ -28,6 +26,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".HomeActivity"
+            android:label="@string/title_activity_home"></activity>
     </application>
 
 </manifest>
