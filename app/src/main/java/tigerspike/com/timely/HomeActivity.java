@@ -25,13 +25,13 @@ public class HomeActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.navigation_home:
+                case R.id.navigation_today:
                     mTextMessage.setText(R.string.title_today);
                     return true;
-                case R.id.navigation_dashboard:
+                case R.id.navigation_stats:
                     mTextMessage.setText(R.string.title_stats);
                     return true;
-                case R.id.navigation_notifications:
+                case R.id.navigation_settings:
                     mTextMessage.setText(R.string.title_settings);
                     gotoSettingsScreen();
                     return true;
@@ -52,7 +52,7 @@ public class HomeActivity extends AppCompatActivity {
 //        sendMessage();
 
         //Creating SendMail object
-        SendEmail sm = new SendEmail(this, "anaschaky@gmail.com", "I am late for 5 Minute!!!", "Timely Notification");
+        SendEmail sm = new SendEmail(this, "anaschaky@gmail.com","Timely App Notification!!!", "I am late for 5 Minute!!!");
         //Executing sendmail to send email
         sm.execute();
     }
