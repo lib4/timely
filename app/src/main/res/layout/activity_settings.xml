@@ -98,6 +98,31 @@
 
         </LinearLayout>
 
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Choose Your Line Manager"
+                android:textAppearance="@style/CodeFont"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textAlignment="viewEnd"
+                android:text="Select"
+                android:textAppearance="@style/HoghtlightCodeFont"/>
+
+
+        </LinearLayout>
+
     </LinearLayout>
 
     <android.support.design.widget.BottomNavigationView
