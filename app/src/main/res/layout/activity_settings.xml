@@ -117,6 +117,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textAlignment="viewEnd"
+                android:id="@+id/choose_your_lm"
                 android:text="Select"
                 android:textAppearance="@style/HoghtlightCodeFont"/>
 
