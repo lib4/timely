@@ -1,7 +1,7 @@
 package tigerspike.com.timely;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.databinding.ViewDataBinding;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,7 +9,6 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.afollestad.materialdialogs.simplelist.MaterialSimpleListAdapter;
@@ -45,6 +44,7 @@ public class SettingsActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_today:
+                    gotoHomeScreen();
                     return true;
                 case R.id.navigation_stats:
                     return true;
@@ -60,12 +60,10 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_settings);
         binding.account.setText(getIntent().getStringExtra("Email"));
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setSelectedItemId(R.id.navigation_settings);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        binding.navigation.setSelectedItemId(R.id.navigation_settings);
+        binding.navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         binding.chooseYourWorkingHours.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -130,6 +128,12 @@ public class SettingsActivity extends AppCompatActivity {
                     .build());
         }
         return dialogItems;
+    }
+
+    private void gotoHomeScreen() {
+        Intent intent = new Intent(this, HomeActivity.class);
+        startActivity(intent);
+        finishAffinity();
     }
 
 }
