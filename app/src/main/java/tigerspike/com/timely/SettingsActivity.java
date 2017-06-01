@@ -1,5 +1,7 @@
 package tigerspike.com.timely;
 
+import android.databinding.DataBindingUtil;
+import android.databinding.ViewDataBinding;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,10 +15,28 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.afollestad.materialdialogs.simplelist.MaterialSimpleListAdapter;
 import com.afollestad.materialdialogs.simplelist.MaterialSimpleListItem;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import tigerspike.com.timely.databinding.SettingsBinding;
+
 public class SettingsActivity extends AppCompatActivity {
 
-    private TextView mChooseLineManager;
-    private TextView mAccountEmail;
+    private static final List<String> emails = Arrays.asList(
+            "adrian.roney@tigerspike.com",
+            "steve.burrows@tigerspike.com",
+            "ronan.donohoe@tigerspike.com",
+            "andy.boyle@tigerspike.com"
+    );
+
+    private static final List<String> workingHours = Arrays.asList(
+            "8:00 - 16:30",
+            "8:15 - 16:45",
+            "8:30 - 17:00",
+            "8:45 - 17:15",
+            "9:00 - 17:30"
+    );
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -24,34 +44,60 @@ public class SettingsActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.navigation_home:
+                case R.id.navigation_today:
                     return true;
-                case R.id.navigation_dashboard:
+                case R.id.navigation_stats:
                     return true;
-                case R.id.navigation_notifications:
+                case R.id.navigation_settings:
                     return true;
             }
             return false;
         }
 
     };
+    private SettingsBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-
-        mChooseLineManager = (TextView) findViewById(R.id.choose_your_lm);
-        mAccountEmail = (TextView) findViewById(R.id.account);
-        mAccountEmail.setText(getIntent().getStringExtra("Email"));
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_settings);
+        binding.account.setText(getIntent().getStringExtra("Email"));
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setSelectedItemId(R.id.navigation_settings);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        mChooseLineManager.setOnClickListener(new View.OnClickListener() {
+        binding.chooseYourWorkingHours.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                prepareAndShowWorkingHours();
+            }
+        });
+        binding.chooseYourLm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 prepareAndShowLineManagers();
             }
         });
+    }
+
+    private void prepareAndShowWorkingHours() {
+        final MaterialSimpleListAdapter adapter = new MaterialSimpleListAdapter(new MaterialSimpleListAdapter.Callback() {
+            @Override
+            public void onMaterialListItemSelected(MaterialDialog dialog, int index, MaterialSimpleListItem item) {
+                // TODO
+                binding.chooseYourWorkingHours.setText(item.getContent());
+                dialog.cancel();
+            }
+        });
+
+        for (MaterialSimpleListItem item : getDialogItems(workingHours)) {
+            adapter.add(item);
+        }
+
+        new MaterialDialog.Builder(this)
+                .title("Choose Your Working Hours")
+                .adapter(adapter, null)
+                .show();
     }
 
 
@@ -60,36 +106,30 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onMaterialListItemSelected(MaterialDialog dialog, int index, MaterialSimpleListItem item) {
                 // TODO
-                mChooseLineManager.setText(item.getContent());
+                binding.chooseYourLm.setText(item.getContent());
                 dialog.cancel();
             }
         });
 
-        adapter.add(new MaterialSimpleListItem.Builder(this)
-                .content("Adrian.roney@tigerspike.com")
-//                .icon(R.drawable.ic_account_circle)
-                .backgroundColor(Color.WHITE)
-                .build());
-        adapter.add(new MaterialSimpleListItem.Builder(this)
-                .content("steve.burrows@tigerspike.com")
-//                .icon(R.drawable.ic_account_circle)
-                .backgroundColor(Color.WHITE)
-                .build());
-        adapter.add(new MaterialSimpleListItem.Builder(this)
-                .content("ronan.donohoe@tigerspike.com")
-//                .icon(R.drawable.ic_content_add)
-                .iconPaddingDp(8)
-                .build());
-        adapter.add(new MaterialSimpleListItem.Builder(this)
-                .content("andy.boyle@tigerspike.com")
-//                .icon(R.drawable.ic_content_add)
-                .iconPaddingDp(8)
-                .build());
+        for (MaterialSimpleListItem item : getDialogItems(emails)) {
+            adapter.add(item);
+        }
 
         new MaterialDialog.Builder(this)
                 .title("Choose Your Line Manager")
                 .adapter(adapter, null)
                 .show();
+    }
+
+    private List<MaterialSimpleListItem> getDialogItems(List<String> items) {
+        List<MaterialSimpleListItem> dialogItems = new ArrayList<>();
+        for (String item : items) {
+            dialogItems.add(new MaterialSimpleListItem.Builder(this)
+                    .content(item)
+                    .backgroundColor(Color.WHITE)
+                    .build());
+        }
+        return dialogItems;
     }
 
 }

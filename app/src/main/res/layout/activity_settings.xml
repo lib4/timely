@@ -1,137 +1,144 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="tigerspike.com.timely.SettingsActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data class="SettingsBinding">
+
+    </data>
 
     <LinearLayout
-        android:id="@+id/content"
+        android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-
-        <android.support.v7.widget.SwitchCompat
-            android:id="@+id/toggleButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:text="Notifications"
-            android:textAppearance="@style/CodeFont" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="tigerspike.com.timely.SettingsActivity">
 
         <LinearLayout
+            android:id="@+id/content"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="16dp">
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="0dp"
+
+            <android.support.v7.widget.SwitchCompat
+                android:id="@+id/toggleButton"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Account"
-                android:textAppearance="@style/CodeFont" />
+                android:padding="16dp"
+                android:text="Notifications"
+                android:textAppearance="@style/CodeFont"/>
 
-            <TextView
-                android:id="@+id/account"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="xyz@tigerspike.com"
-                android:textAlignment="viewEnd"
-                android:textAppearance="@style/HoghtlightCodeFont" />
+                android:orientation="horizontal"
+                android:padding="16dp">
 
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Account"
+                    android:textAppearance="@style/CodeFont"/>
+
+                <TextView
+                    android:id="@+id/account"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="xyz@tigerspike.com"
+                    android:textAlignment="viewEnd"
+                    android:textAppearance="@style/HoghtlightCodeFont"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Working Hours"
+                    android:textAppearance="@style/CodeFont"/>
+
+                <TextView
+                    android:id="@+id/choose_your_working_hours"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Select"
+                    android:textAlignment="viewEnd"
+                    android:textAppearance="@style/HoghtlightCodeFont"/>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Working Days"
+                    android:textAppearance="@style/CodeFont"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Select"
+                    android:textAlignment="viewEnd"
+                    android:textAppearance="@style/HoghtlightCodeFont"/>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Choose Your Line Manager"
+                    android:textAppearance="@style/CodeFont"/>
+
+                <TextView
+                    android:id="@+id/choose_your_lm"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Select"
+                    android:textAlignment="viewEnd"
+                    android:textAppearance="@style/HoghtlightCodeFont"/>
+
+
+            </LinearLayout>
 
         </LinearLayout>
 
-        <LinearLayout
+        <android.support.design.widget.BottomNavigationView
+            android:id="@+id/navigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="16dp">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Working Hours"
-                android:textAppearance="@style/CodeFont" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Select"
-                android:textAlignment="viewEnd"
-                android:textAppearance="@style/HoghtlightCodeFont" />
-
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="16dp">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Working Days"
-                android:textAppearance="@style/CodeFont" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Select"
-                android:textAlignment="viewEnd"
-                android:textAppearance="@style/HoghtlightCodeFont" />
-
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="16dp">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Choose Your Line Manager"
-                android:textAppearance="@style/CodeFont" />
-
-            <TextView
-                android:id="@+id/choose_your_lm"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Select"
-                android:textAlignment="viewEnd"
-                android:textAppearance="@style/HoghtlightCodeFont" />
-
-
-        </LinearLayout>
+            android:layout_gravity="bottom"
+            android:background="?android:attr/windowBackground"
+            app:menu="@menu/navigation"/>
 
     </LinearLayout>
-
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="?android:attr/windowBackground"
-        app:menu="@menu/navigation" />
-
-</LinearLayout>
+</layout>
